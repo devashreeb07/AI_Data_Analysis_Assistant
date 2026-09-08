@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Analysis Results</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+
+    <!-- ================================================= -->
+    <!-- HEADER -->
+    <!-- ================================================= -->
+
+    <div class="results-header">
+
+        <div>
+
+            <div class="section-label">
+                ✦ ANALYTICS DASHBOARD
+            </div>
+
+            <h1>
+                Analysis Results
+            </h1>
+
+            <p>
+                Your dataset has been successfully analyzed.
+            </p>
+
+        </div>
+
+
+        <a href="/">
+
+            <button type="button">
+                + New Analysis
+            </button>
+
+        </a>
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!-- DATASET OVERVIEW -->
+    <!-- ================================================= -->
+
+    <section class="section">
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                DATASET OVERVIEW
+            </div>
+
+            <h2>
+                At a Glance
+            </h2>
+
+        </div>
+
+
+        <div class="stats">
+
+
+            <!-- ROWS -->
+
+            <div class="metric-card">
+
+                <div class="metric-top">
+
+                    <span>
+                        Rows
+                    </span>
+
+                    <span>
+                        📊
+                    </span>
+
+                </div>
+
+
+                <strong>
+                    {{ rows }}
+                </strong>
+
+
+                <small>
+                    Total records
+                </small>
+
+            </div>
+
+
+
+            <!-- COLUMNS -->
+
+            <div class="metric-card">
+
+                <div class="metric-top">
+
+                    <span>
+                        Columns
+                    </span>
+
+                    <span>
+                        📋
+                    </span>
+
+                </div>
+
+
+                <strong>
+                    {{ columns }}
+                </strong>
+
+
+                <small>
+                    Data attributes
+                </small>
+
+            </div>
+
+
+
+            <!-- MISSING VALUES -->
+
+            <div class="metric-card">
+
+                <div class="metric-top">
+
+                    <span>
+                        Missing
+                    </span>
+
+                    <span>
+                        ⚠️
+                    </span>
+
+                </div>
+
+
+                <strong>
+                    {{ missing_values }}
+                </strong>
+
+
+                <small>
+                    Missing values
+                </small>
+
+            </div>
+
+
+
+            <!-- DUPLICATES -->
+
+            <div class="metric-card">
+
+                <div class="metric-top">
+
+                    <span>
+                        Duplicates
+                    </span>
+
+                    <span>
+                        🔁
+                    </span>
+
+                </div>
+
+
+                <strong>
+                    {{ duplicate_rows }}
+                </strong>
+
+
+                <small>
+                    Duplicate records
+                </small>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================================= -->
+    <!-- DATASET PREVIEW -->
+    <!-- ================================================= -->
+
+    <section class="section">
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                DATA EXPLORATION
+            </div>
+
+            <h2>
+                Dataset Preview
+            </h2>
+
+        </div>
+
+
+        <div class="table-container">
+
+            {{ preview|safe }}
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================================= -->
+    <!-- COLUMN DATA TYPES -->
+    <!-- ================================================= -->
+
+    <section class="section">
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                DATA STRUCTURE
+            </div>
+
+            <h2>
+                Column Data Types
+            </h2>
+
+            <p>
+                Data types detected automatically for each column.
+            </p>
+
+        </div>
+
+
+        <div class="table-container">
+
+            <table class="analysis-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Column
+                        </th>
+
+                        <th>
+                            Data Type
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for item in data_types %}
+
+                    <tr>
+
+                        <td>
+                            {{ item.name }}
+                        </td>
+
+                        <td>
+                            {{ item.type }}
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================================= -->
+    <!-- DATA QUALITY -->
+    <!-- ================================================= -->
+
+    <section class="section">
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                DATA QUALITY
+            </div>
+
+            <h2>
+                Missing Values
+            </h2>
+
+            <p>
+                Number of missing values detected in each column.
+            </p>
+
+        </div>
+
+
+        <div class="table-container">
+
+            <table class="analysis-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Column
+                        </th>
+
+                        <th>
+                            Missing Values
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for item in missing_data %}
+
+                    <tr>
+
+                        <td>
+                            {{ item.name }}
+                        </td>
+
+                        <td>
+                            {{ item.count }}
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================================= -->
+    <!-- NUMERICAL STATISTICS -->
+    <!-- ================================================= -->
+
+    <section class="section">
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                STATISTICAL ANALYSIS
+            </div>
+
+            <h2>
+                Numerical Statistics
+            </h2>
+
+            <p>
+                Summary statistics for the numerical columns
+                in your dataset.
+            </p>
+
+        </div>
+
+
+        <div class="table-container">
+
+            <table class="analysis-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Column
+                        </th>
+
+                        <th>
+                            Mean
+                        </th>
+
+                        <th>
+                            Minimum
+                        </th>
+
+                        <th>
+                            Maximum
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for item in numeric_stats %}
+
+                    <tr>
+
+                        <td>
+                            {{ item.name }}
+                        </td>
+
+                        <td>
+                            {{ "%.2f"|format(item.mean) }}
+                        </td>
+
+                        <td>
+                            {{ "%.2f"|format(item.min) }}
+                        </td>
+
+                        <td>
+                            {{ "%.2f"|format(item.max) }}
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================================= -->
+    <!-- KEY FINDINGS -->
+    <!-- ================================================= -->
+
+    <section class="section">
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                ✦ KEY FINDINGS
+            </div>
+
+            <h2>
+                What Does Your Data Tell You?
+            </h2>
+
+            <p>
+                Important patterns and relationships
+                discovered automatically.
+            </p>
+
+        </div>
+
+
+        <div class="insight-container">
+
+            {% for insight in insights %}
+
+            <div class="insight-card">
+
+                <div class="insight-number">
+
+                    {{ "%02d"|format(loop.index) }}
+
+                </div>
+
+
+                <p>
+                    {{ insight }}
+                </p>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================================= -->
+    <!-- RECOMMENDATIONS -->
+    <!-- ================================================= -->
+
+    <section class="section">
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                ✦ ACTIONABLE INSIGHTS
+            </div>
+
+            <h2>
+                Recommended Actions
+            </h2>
+
+            <p>
+                Practical recommendations based on
+                the analysis.
+            </p>
+
+        </div>
+
+
+        <div class="recommendation-container">
+
+            {% for recommendation in recommendations %}
+
+            <div class="recommendation-card">
+
+                <div class="recommendation-number">
+
+                    {{ "%02d"|format(loop.index) }}
+
+                </div>
+
+
+                <p>
+                    {{ recommendation }}
+                </p>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================================= -->
+    <!-- VISUAL ANALYSIS -->
+    <!-- ================================================= -->
+
+    <section class="section">
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                VISUAL ANALYSIS
+            </div>
+
+            <h2>
+                Explore the Visual Story
+            </h2>
+
+            <p>
+                Automatically generated visualizations
+                help reveal patterns more clearly.
+            </p>
+
+        </div>
+
+
+        <div class="charts">
+
+            {% if charts %}
+
+                {% for chart in charts %}
+
+                <div class="chart-card">
+
+                    <img
+                        src="{{ url_for('static', filename='charts/' + chart) }}"
+                        alt="Data visualization">
+
+                </div>
+
+                {% endfor %}
+
+            {% else %}
+
+                <p>
+                    No suitable visualizations could be generated
+                    for this dataset.
+                </p>
+
+            {% endif %}
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================================= -->
+    <!-- ACTION BUTTONS -->
+    <!-- ================================================= -->
+
+    <div class="report-buttons">
+
+
+        <a href="{{ url_for('download_report') }}">
+
+            <button type="button">
+
+                📄 Download PDF Report
+
+            </button>
+
+        </a>
+
+
+
+        <a href="/">
+
+            <button
+                type="button"
+                class="secondary-button">
+
+                ← Analyze Another Dataset
+
+            </button>
+
+        </a>
+
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!-- FOOTER -->
+    <!-- ================================================= -->
+
+    <footer>
+
+        <strong>
+            Data Analysis Assistant
+        </strong>
+
+        <p>
+            Turning data into insights.
+        </p>
+
+    </footer>
+
+
+</div>
+
+
+</body>
+
+</html>

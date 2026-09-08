@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Data Analysis Assistant</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body id="top">
+
+<div class="container">
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                ✦ SMART DATA ANALYSIS
+            </div>
+
+            <h1>
+                Turn Raw Data Into
+                <span>Meaningful Insights.</span>
+            </h1>
+
+            <p>
+                Upload your CSV dataset and instantly explore
+                statistics, patterns, relationships, visualizations
+                and actionable recommendations.
+            </p>
+
+        </div>
+
+        <div class="hero-decoration">
+
+            <div class="floating-card card-one">
+                📈
+                <strong>Insights</strong>
+            </div>
+
+            <div class="floating-card card-two">
+                📊
+                <strong>Visuals</strong>
+            </div>
+
+            <div class="floating-card card-three">
+                💡
+                <strong>Decisions</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- UPLOAD -->
+
+    <section class="upload-section">
+
+        <div class="upload-content">
+
+            <div class="upload-icon">
+                ⬆
+            </div>
+
+            <h2>Start Exploring Your Data</h2>
+
+            <p>
+                Upload a CSV file and let the application
+                analyze your dataset automatically.
+            </p>
+
+            <form method="POST"
+                  enctype="multipart/form-data">
+
+                <div class="file-upload">
+
+                    <input
+                        type="file"
+                        name="file"
+                        accept=".csv"
+                        required
+                    >
+
+                    <div class="file-label">
+
+                        <span class="file-icon">📁</span>
+
+                        <div>
+                            <strong>Choose CSV file</strong>
+                            <small>Only .csv files are supported</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <button type="submit"
+                        class="primary-button">
+
+                    Analyze My Dataset
+                    <span>→</span>
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- DISCOVER SECTION -->
+
+    <section class="section discover-section">
+
+        <div class="section-heading center">
+
+            <div class="section-label">
+                DISCOVER MORE
+            </div>
+
+            <h2>
+                What Can You Discover?
+            </h2>
+
+            <p>
+                From data quality to hidden relationships,
+                the application transforms your dataset into
+                easy-to-understand analytical findings.
+            </p>
+
+        </div>
+
+
+        <div class="discover-grid">
+
+            <div class="discover-card">
+
+                <div class="discover-icon blue">
+                    📈
+                </div>
+
+                <div>
+                    <h3>Trends & Patterns</h3>
+
+                    <p>
+                        Identify important patterns and
+                        trends hidden inside your dataset.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="discover-card">
+
+                <div class="discover-icon purple">
+                    🎯
+                </div>
+
+                <div>
+                    <h3>Key Metrics</h3>
+
+                    <p>
+                        Quickly understand the most important
+                        numbers and statistics.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="discover-card">
+
+                <div class="discover-icon green">
+                    🔗
+                </div>
+
+                <div>
+                    <h3>Relationships</h3>
+
+                    <p>
+                        Explore relationships between
+                        numerical variables.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="discover-card">
+
+                <div class="discover-icon orange">
+                    ⚠️
+                </div>
+
+                <div>
+                    <h3>Data Quality</h3>
+
+                    <p>
+                        Detect missing values and duplicate
+                        records in your dataset.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="discover-card">
+
+                <div class="discover-icon pink">
+                    💡
+                </div>
+
+                <div>
+                    <h3>Actionable Insights</h3>
+
+                    <p>
+                        Convert analytical findings into
+                        practical recommendations.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="discover-card">
+
+                <div class="discover-icon cyan">
+                    📊
+                </div>
+
+                <div>
+                    <h3>Visual Stories</h3>
+
+                    <p>
+                        Understand your data through
+                        automatically generated charts.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- DATA TO DECISION -->
+
+    <section class="journey-section">
+
+        <div class="section-heading center">
+
+            <div class="section-label">
+                FROM DATA TO DECISIONS
+            </div>
+
+            <h2>
+                One Dataset. Multiple Discoveries.
+            </h2>
+
+        </div>
+
+
+        <div class="journey">
+
+            <div class="journey-item">
+
+                <div class="journey-number">
+                    01
+                </div>
+
+                <div class="journey-icon">
+                    📁
+                </div>
+
+                <h3>Your Data</h3>
+
+                <p>
+                    Upload your CSV dataset.
+                </p>
+
+            </div>
+
+
+            <div class="journey-arrow">
+                →
+            </div>
+
+
+            <div class="journey-item">
+
+                <div class="journey-number">
+                    02
+                </div>
+
+                <div class="journey-icon">
+                    🔎
+                </div>
+
+                <h3>Analysis</h3>
+
+                <p>
+                    Explore statistics and relationships.
+                </p>
+
+            </div>
+
+
+            <div class="journey-arrow">
+                →
+            </div>
+
+
+            <div class="journey-item">
+
+                <div class="journey-number">
+                    03
+                </div>
+
+                <div class="journey-icon">
+                    💡
+                </div>
+
+                <h3>Insights</h3>
+
+                <p>
+                    Discover meaningful patterns.
+                </p>
+
+            </div>
+
+
+            <div class="journey-arrow">
+                →
+            </div>
+
+
+            <div class="journey-item">
+
+                <div class="journey-number">
+                    04
+                </div>
+
+                <div class="journey-icon">
+                    🎯
+                </div>
+
+                <h3>Decisions</h3>
+
+                <p>
+                    Take informed action.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA -->
+
+    <section class="final-cta">
+
+        <div>
+
+            <h2>
+                Ready to explore your data?
+            </h2>
+
+            <p>
+                Upload a CSV and discover what your data
+                has to say.
+            </p>
+
+        </div>
+
+        <a href="#top">
+
+            <button type="button">
+                Start Analyzing →
+            </button>
+
+        </a>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <strong>
+            Data Analysis Assistant
+        </strong>
+
+        <p>
+            Turning data into insights.
+        </p>
+
+    </footer>
+
+</div>
+
+</body>
+</html>
